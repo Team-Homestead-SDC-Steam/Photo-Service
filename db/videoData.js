@@ -1,3 +1,6 @@
+// This is whats returned when searched for 'Civilization IV' on YouTube to populate the database with videos from the game.
+// The index.js file in db will loop through this to get the video IDs
+
 var videos = [
   {
     "kind": "youtube#searchResult",
@@ -793,60 +796,62 @@ var videos = [
       "channelId": "UC6i4mzH3OPrZV0p64zoz-Ww",
       "title": "Civilization VI – Trailer de anúncio | PS4",
       "description": "Civilization VI, de Sid Meier, e Civilization VI Expansion Bundle(Rise & Fall + Gathering Storm) chegam ao PlayStation® 4 em 22 de novembro de 2019!",
-  "thumbnails": {
-      "default": {
-        "url": "https://i.ytimg.com/vi/NyzVXfhz5xA/default.jpg",
-        "width": 120,
-        "height": 90
-      },
-      "medium": {
-        "url": "https://i.ytimg.com/vi/NyzVXfhz5xA/mqdefault.jpg",
-        "width": 320,
-        "height": 180
-      },
-      "high": {
-        "url": "https://i.ytimg.com/vi/NyzVXfhz5xA/hqdefault.jpg",
-        "width": 480,
-        "height": 360
-      }
-    },
-    "channelTitle": "PlayStation Brasil",
-    "liveBroadcastContent": "none",
-    "publishTime": "2019-09-24T22:10:34Z"
-  }
-  },
-{
-  "kind": "youtube#searchResult",
-    "etag": "XdFWZyxTTz3Tx9LACeqDmzXfhkg",
-      "id": {
-    "kind": "youtube#video",
-      "videoId": "i9H0Of--P9I"
-  },
-  "snippet": {
-    "publishedAt": "2016-10-22T22:58:20Z",
-      "channelId": "UCNvzD7Z-g64bPXxGzaQaa4g",
-        "title": "Civilization VI - Before You Buy",
-          "description": "Sid Meier's Civilization VI (PC) is here, boasting a bunch of new features and supposed improvements. Is it worth diving into? Let's talk about it! ☆Follow Jake on ...",
-            "thumbnails": {
-      "default": {
-        "url": "https://i.ytimg.com/vi/i9H0Of--P9I/default.jpg",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/NyzVXfhz5xA/default.jpg",
           "width": 120,
-            "height": 90
-      },
-      "medium": {
-        "url": "https://i.ytimg.com/vi/i9H0Of--P9I/mqdefault.jpg",
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/NyzVXfhz5xA/mqdefault.jpg",
           "width": 320,
-            "height": 180
-      },
-      "high": {
-        "url": "https://i.ytimg.com/vi/i9H0Of--P9I/hqdefault.jpg",
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/NyzVXfhz5xA/hqdefault.jpg",
           "width": 480,
-            "height": 360
-      }
-    },
-    "channelTitle": "gameranx",
+          "height": 360
+        }
+      },
+      "channelTitle": "PlayStation Brasil",
       "liveBroadcastContent": "none",
-        "publishTime": "2016-10-22T22:58:20Z"
+      "publishTime": "2019-09-24T22:10:34Z"
+    }
+  },
+  {
+    "kind": "youtube#searchResult",
+    "etag": "XdFWZyxTTz3Tx9LACeqDmzXfhkg",
+    "id": {
+      "kind": "youtube#video",
+      "videoId": "i9H0Of--P9I"
+    },
+    "snippet": {
+      "publishedAt": "2016-10-22T22:58:20Z",
+      "channelId": "UCNvzD7Z-g64bPXxGzaQaa4g",
+      "title": "Civilization VI - Before You Buy",
+      "description": "Sid Meier's Civilization VI (PC) is here, boasting a bunch of new features and supposed improvements. Is it worth diving into? Let's talk about it! ☆Follow Jake on ...",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/i9H0Of--P9I/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/i9H0Of--P9I/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/i9H0Of--P9I/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        }
+      },
+      "channelTitle": "gameranx",
+      "liveBroadcastContent": "none",
+      "publishTime": "2016-10-22T22:58:20Z"
+    }
   }
-}
-  ]
+]
+
+module.exports.videos = videos;

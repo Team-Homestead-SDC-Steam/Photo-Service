@@ -1,3 +1,7 @@
+var videos = require('./videoData.js')
+
+// console.log(videos)
+
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/media', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -19,8 +23,20 @@ var mediaSchema = mongoose.Schema({
 
 var Item = mongoose.model('Item', mediaSchema);
 
+var insertVideos = (arr) => {
+  for (let i = 0; i < 20; i++) {
+    var videoId = arr.videos[i].id.videoId
+    var newItem = new Item({
+      id: i,
+      mediaType: 'video',
+      url: `https://www.youtube.com/embed/${videoId}`
+    })
+    newItem.save()
+  }
+}
+
 var insertPictures = () => {
-  for (let i = 1; i < 81; i++) {
+  for (let i = 20; i < 100; i++) {
     var newItem = new Item({
       id: i,
       mediaType: 'photo',
@@ -29,5 +45,9 @@ var insertPictures = () => {
     newItem.save()
   }
 }
+
+// db.dropDatabase()
+
+// insertVideos(videos)
 
 // insertPictures();
