@@ -16,7 +16,7 @@ db.once('open', function () {
 });
 
 var mediaSchema = mongoose.Schema({
-  id: {type: Number, unqiue: true},
+  id: {type: Number, unique: true},
   mediaType: String,
   url: String
 })
