@@ -80,3 +80,5 @@ var pictures = [
   { "id": 78, "name": "135878-sid-meier-s-civilization-iv-windows-screenshot-by-holding_jdunsn", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592924376/135878-sid-meier-s-civilization-iv-windows-screenshot-by-holding_jdunsn.jpg" },
   { "id": 79, "name": "001147s012_w8sxms", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592924619/001147s012_w8sxms.jpg" }
 ]
+
+module.exports.pictures = pictures;

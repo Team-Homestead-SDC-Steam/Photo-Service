@@ -1,6 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var items = require('../db')
+var items = require('../db/index')
 
 var app = express();
 app.use(express.static(__dirname + '/../public'));
