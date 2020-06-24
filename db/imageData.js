@@ -78,7 +78,37 @@ var pictures = [
   { "id": 76, "name": "135888-sid-meier-s-civilization-iv-windows-screenshot-religion-plays_rjolq1", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592926337/135888-sid-meier-s-civilization-iv-windows-screenshot-religion-plays_rjolq1.jpg" },
   { "id": 77, "name": "135883-sid-meier-s-civilization-iv-windows-screenshot-leader-figureheads_xohbst", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592926882/135883-sid-meier-s-civilization-iv-windows-screenshot-leader-figureheads_xohbst.jpg" },
   { "id": 78, "name": "135878-sid-meier-s-civilization-iv-windows-screenshot-by-holding_jdunsn", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592924376/135878-sid-meier-s-civilization-iv-windows-screenshot-by-holding_jdunsn.jpg" },
-  { "id": 79, "name": "001147s012_w8sxms", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592924619/001147s012_w8sxms.jpg" }
+  { "id": 79, "name": "001147s012_w8sxms", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592924619/001147s012_w8sxms.jpg" },
+  { "id": 80, "name": "d442ef94dbb5b18500c39487c7fe1a46_dyehgs", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959452/d442ef94dbb5b18500c39487c7fe1a46_dyehgs.jpg" },
+  { "id": 81, "name": "maxresdefault_nbiruj", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959453/maxresdefault_nbiruj.jpg" },
+  { "id": 82, "name": "maxresdefault_ncynkc", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959455/maxresdefault_ncynkc.jpg" },
+  { "id": 83, "name": "zelda_credits_llbrlx", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959458/zelda_credits_llbrlx.jpg" },
+  { "id": 84, "name": "f4dd62b508e5f944afb88ec2009ce389_cozvbg", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959462/f4dd62b508e5f944afb88ec2009ce389_cozvbg.jpg" },
+  { "id": 85, "name": "1187377-new_super_mario_bros._wii_title_screen_kj99mh", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959467/1187377-new_super_mario_bros._wii_title_screen_kj99mh.png" },
+  { "id": 86, "name": "hqdefault_b8lu90", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959473/hqdefault_b8lu90.jpg" },
+  { "id": 87, "name": "maxresdefault_lzgouz", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959480/maxresdefault_lzgouz.jpg" },
+  { "id": 88, "name": "top-virtual-reality-VR-steam-video-games-2017-810x505_gvo5t8", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959578/top-virtual-reality-VR-steam-video-games-2017-810x505_gvo5t8.jpg" },
+  { "id": 89, "name": "71B2xwOgamSsa7ma_lnljyk", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959588/71B2xwOgamSsa7ma_lnljyk.jpg" },
+  { "id": 90, "name": "steam-summer-sale_piu7lm", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959598/steam-summer-sale_piu7lm.png" },
+  { "id": 91, "name": "featured380_vch2mq", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959679/featured380_vch2mq.jpg" },
+  { "id": 92, "name": "iPhone_Xs_-_2020-05-15T094452.700_ycxbuq", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959692/iPhone_Xs_-_2020-05-15T094452.700_ycxbuq.jpg" },
+  { "id": 93, "name": "Online-Games_htydhk", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959704/Online-Games_htydhk.jpg" },
+  { "id": 94, "name": "83up3-wwc_jbfddm", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959718/83up3-wwc_jbfddm.jpg" },
+  { "id": 95, "name": "nimbleben_thumb_ow2vhn", "url": "https://res.cloudinary.com/dq3iywusm/image/upload/v1592959733/nimbleben_thumb_ow2vhn.jpg" }
 ]
 
 module.exports.pictures = pictures;
+
+
+// var object = {"resources":[{"public_id":"nimbleben_thumb_ow2vhn","version":1592959733,"format":"jpg","width":848,"height":477,"type":"upload","created_at":"2020-06-24T00:48:53Z"},{"public_id":"83up3-wwc_jbfddm","version":1592959718,"format":"jpg","width":720,"height":405,"type":"upload","created_at":"2020-06-24T00:48:38Z"},{"public_id":"Online-Games_htydhk","version":1592959704,"format":"jpg","width":1280,"height":720,"type":"upload","created_at":"2020-06-24T00:48:24Z"}],"updated_at":"2020-06-24T15:39:31Z"}
+
+// var test1 = "https://res.cloudinary.com/dq3iywusm/image/upload/w_600,h_337/" + object.resources[0].public_id + '.' + object.resources[0].format
+
+// var test2 = "https://res.cloudinary.com/dq3iywusm/image/upload/w_600,h_337/nimbleben_thumb_ow2vhn.jpg"
+
+// console.log('test1: ', test1)
+// console.log('test2: ', test2)
+// console.log(test1 === test2)
+
+// https://res.cloudinary.com/dq3iywusm/image/list/test.json
+
