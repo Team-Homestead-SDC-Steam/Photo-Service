@@ -24,7 +24,8 @@ var mediaSchema = mongoose.Schema({
 var Item = mongoose.model('Item', mediaSchema);
 
 var insertVideos = (arr) => {
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 200; i++) {
+    console.log(i)
     var videoId = arr.videos[i].id.videoId
     var newItem = new Item({
       id: i,
@@ -37,8 +38,9 @@ var insertVideos = (arr) => {
 
 var insertCarouselPictures = (arr) => {
   for (let i = 0; i < 600; i++) {
+    console.log(i)
     var newItem = new Item({
-      id: 20 + i,
+      id: 200 + i,
       mediaType: 'carouselPhoto',
       // '/w_600,h_337' are the dimensions for the pictures in the carousel
       // url: arr.pictures[0].url.slice(0, arr.pictures[0].url.indexOf('v')) + 'w_600,h_337/' + arr.pictures[0].url.substring(arr.pictures[0].url.indexOf('v') + 12, arr.pictures[0].url.length)
@@ -50,8 +52,9 @@ var insertCarouselPictures = (arr) => {
 
 var insertThumbnailPictures = (arr) => {
   for (let i = 600; i < 700; i++) {
+    console.log(i)
     var newItem = new Item({
-      id: 20 + i,
+      id: 200 + i,
       mediaType: 'thumbnail',
       // '/w_184,h_69' are the dimensions for the thumbnail pictures
       url: "https://res.cloudinary.com/dq3iywusm/image/upload/w_184,h_69/" + arr[i].public_id + '.' + arr[i].format
@@ -62,8 +65,9 @@ var insertThumbnailPictures = (arr) => {
 
 var insertDescriptionPictures = (arr) => {
   for (let i = 700; i < 800; i++) {
+    console.log(i)
     var newItem = new Item({
-      id: 20 + i,
+      id: 200 + i,
       mediaType: 'descrptionPhoto',
       // '/w_460,h_215' are the dimensions for the pictures in the carousel
       url: "https://res.cloudinary.com/dq3iywusm/image/upload/w_460,h_215/" + arr[i].public_id + '.' + arr[i].format
