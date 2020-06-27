@@ -7,7 +7,8 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "seed": "node db/seed.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint"
   },
   "author": "Will Hudson",
   "license": "ISC",

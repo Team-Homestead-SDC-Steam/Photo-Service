@@ -1,7 +1,5 @@
-const { pictures } = require('../db/imageData.js');
 const mockDb = require('../db/seed.js');
 
-// console.log(mockDb.mockDb)
 
 
 test('all pictures should be unique', () => {

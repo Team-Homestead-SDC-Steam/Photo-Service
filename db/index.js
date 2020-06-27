@@ -19,46 +19,4 @@ var mediaSchema = mongoose.Schema({
 
 var Item = mongoose.model('Item', mediaSchema);
 
-
-getMedia = (type, callback) => {
-  Item.find({'mediaType': type}, (err, data) => {
-    if (err) {
-      console.log('error with getThumbnails: ', err)
-    }
-    thumbnail = data;
-  })
-}
-
-// getMedia('thumbnail')
-// console.log(thumbnail)
-
-// var thumbnails = getMedia('thumbnail', (err, data) => {
-//   if (err) {
-//     console.log('error with getMedia: ', err)
-//   }
-//   return data;
-// })
-
-// var getThumbnails = (value) => {
-//   return Item.find({'mediaType': value}).exec()
-// }
-
-// thumbnails = async () => {
-//   let thumbnails;
-//   try {
-//       thumbnails = await query
-//   } catch (err) {
-//       console.log(err);
-//   }
-//   return thumbnails;
-// }
-  // return await getThumbnails('thumbnail')
-  // console.log('object: ', object)
-  // return object;
-
-
-
-// console.log('thumbnail variable: ', thumbnails())
-
 module.exports.db = db;
-// module.exports.thumbnails = thumbnails;

@@ -1,4 +1,3 @@
-// var { videos } = require('./videoData.js');
 const mockDb = require('../db/seed.js');
 
 test('all videos should have a unique url', () => {
