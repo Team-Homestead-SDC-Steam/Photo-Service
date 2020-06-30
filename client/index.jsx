@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,16 @@ class App extends React.Component {
 
   loadMedia () {
     console.log('test is working')
+    $.ajax({
+      method: 'GET',
+      url: '/media/items',
+      success: (data) => {
+        console.log(data)
+      },
+      error: (err) => {
+        console.log('error with ajax loadMedia: ', err)
+      }
+    })
   }
 
   render() {

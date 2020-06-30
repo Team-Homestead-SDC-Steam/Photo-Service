@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/media', { useNewUrlParser: true, useUnifiedTopology: true });
 
+const numberOfVideos = 20;
+const numberOfCarouselPhotos = 600;
+
 var db = mongoose.connection;
 
 db.on('error', function (err) {
@@ -18,5 +21,16 @@ var mediaSchema = mongoose.Schema({
 })
 
 var Item = mongoose.model('Item', mediaSchema);
+
+var generateIds = () => {
+  var idArr = []
+  for (let i = 0; i < 2; i++) {
+    var id = Math.floor(Math.random() * numberOfVideos)
+  }
+}
+
+// var getMedia = callback => {
+//   Item.find({})
+// }
 
 module.exports.db = db;
