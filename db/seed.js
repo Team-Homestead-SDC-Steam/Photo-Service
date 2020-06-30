@@ -37,7 +37,6 @@ var insertVideos = (arr) => {
     mockDb.push(newItem)
     newItem.save()
   }
-  // console.log(mockDb)
 }
 
 var insertCarouselPictures = (arr) => {
@@ -46,13 +45,11 @@ var insertCarouselPictures = (arr) => {
       id: 200 + i,
       mediaType: 'carouselPhoto',
       // '/w_600,h_337' are the dimensions for the pictures in the carousel
-      // url: arr.pictures[0].url.slice(0, arr.pictures[0].url.indexOf('v')) + 'w_600,h_337/' + arr.pictures[0].url.substring(arr.pictures[0].url.indexOf('v') + 12, arr.pictures[0].url.length)
       url: "https://res.cloudinary.com/dq3iywusm/image/upload/w_600,h_337/" + arr[i].public_id + '.' + arr[i].format
     })
     mockDb.push(newItem)
     newItem.save()
   }
-  // console.log(mockDb)
 }
 
 var insertThumbnailPictures = (arr) => {

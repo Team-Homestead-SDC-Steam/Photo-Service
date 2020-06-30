@@ -5,13 +5,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      largePlayer: null,
+      mediaRoll: []
     }
+
+  }
+  componentDidMount() {
+    this.loadMedia()
   }
 
+  loadMedia () {
+    console.log('test is working')
+  }
 
-  render () {
-    return
+  render() {
+    return (
+      <h1>Test</h1>
+    )
   }
 }
 
