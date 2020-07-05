@@ -6,7 +6,9 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
-    "seed": "node db/seed.js"
+    "seed": "node db/seed.js",
+    "test": "jest",
+    "lint": "eslint"
   },
   "author": "Will Hudson",
   "license": "ISC",
@@ -18,10 +20,12 @@
     "eslint": "^7.2.0",
     "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
     "eslint-plugin-react": "^7.20.0",
+    "jest": "^26.1.0",
     "webpack": "^2.2.1"
   },
   "dependencies": {
     "angular": "^1.6.3",
+    "axios": "^0.19.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
     "jquery": "^3.1.1",
