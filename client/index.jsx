@@ -9,7 +9,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       largePlayer: null,
-      mediaRoll: []
+      mediaRoll: [],
+      activeItem: 0
     }
     this.rotateMedia = this.rotateMedia.bind(this)
   }
@@ -26,7 +27,7 @@ class App extends React.Component {
           largePlayer: JSON.parse(data)[0].url,
           mediaRoll: JSON.parse(data)
         })
-        this.rotateMedia()
+        // this.rotateMedia()
       },
       error: (err) => {
         console.log('error with ajax loadMedia: ', err)
@@ -36,25 +37,25 @@ class App extends React.Component {
 
   rotateMedia() {
     var array = this.state.mediaRoll
-    var index = 0
-    this.state.largePlayer =  array[0]
     setInterval(() => {
       if (this.state.largePlayer === array[array.length - 1].url) {
-        this.setState({largePlayer: array[0].url})
-        index = 0
+        this.setState({ largePlayer: array[2].url })
+        this.setState({ activeItem: 1 })
       } else {
-        this.setState({largePlayer: array[index].url})
+        this.setState({ largePlayer: array[this.state.activeItem + 1].url })
       }
-      index++
-    }, 5000)
+      this.setState({ activeItem: this.state.activeItem + 1 })
+    }, 4000)
   }
+
+
 
   render() {
     return (
-      <div >
-        <h1>Photo Carousel</h1>
+      <div>
+        <h1 onClick={() => {this.rotateMedia()}}>Photo Carousel</h1>
         <LargePlayer largePlayer={this.state.largePlayer} />
-        <Items mediaRoll={this.state.mediaRoll} />
+        <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia}/>
       </div>
     )
   }

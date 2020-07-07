@@ -17,6 +17,6 @@ app.get('/media/items', (req,res) => {
   })
 })
 
-app.listen(3001, function() {
-  console.log('listening on port 3001!');
+app.listen(3004, function() {
+  console.log('listening on port 3004');
 });

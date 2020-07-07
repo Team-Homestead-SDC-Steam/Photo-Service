@@ -15,7 +15,7 @@ db.once('open', function () {
 });
 
 var mediaSchema = mongoose.Schema({
-  id: {type: Number, unique: true},
+  id: { type: Number, unique: true },
   mediaType: String,
   url: String
 })
@@ -42,7 +42,7 @@ var generateIds = () => {
 }
 
 var getMedia = callback => {
-  console.log('getMedia invoked')
+  // console.log('getMedia invoked')
   var Ids = generateIds()
   Item.find().where('id').in(Ids).exec((err, data) => {
     if (err) {
