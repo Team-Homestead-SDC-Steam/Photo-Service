@@ -35,27 +35,32 @@ class App extends React.Component {
     })
   }
 
-  rotateMedia() {
+  rotateMedia(pic) {
     var array = this.state.mediaRoll
-    setInterval(() => {
+    this.setState({ largePlayer: array[pic].url, activeItem: pic })
+
+    clearInterval(loopPictures)
+
+    var loopPictures = setInterval(() => {
       if (this.state.largePlayer === array[array.length - 1].url) {
-        this.setState({ largePlayer: array[2].url })
-        this.setState({ activeItem: 1 })
+        this.setState({ largePlayer: array[2].url, activeItem: 1 })
       } else {
         this.setState({ largePlayer: array[this.state.activeItem + 1].url })
       }
       this.setState({ activeItem: this.state.activeItem + 1 })
     }, 4000)
-  }
 
+    // console.log('loopPictures: ', loopPictures)
+    // console.log('pic: ', pic)
+  }
 
 
   render() {
     return (
       <div>
-        <h1 onClick={() => {this.rotateMedia()}}>Photo Carousel</h1>
+        <h1>Photo Carousel</h1>
         <LargePlayer largePlayer={this.state.largePlayer} />
-        <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia}/>
+        <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia} />
       </div>
     )
   }

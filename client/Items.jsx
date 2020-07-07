@@ -42,7 +42,7 @@ const Items = props => {
           )
         }
         return (
-          <Item key={index} active={props.activeItem === index} onClick={props.handleClick}>
+          <Item key={index} active={props.activeItem === index} onClick={() => {props.handleClick(index)}}>
             <img src={img.url} key={index}  />
           </Item>
         )
