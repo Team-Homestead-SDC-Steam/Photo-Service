@@ -21,7 +21,7 @@ class PhotoCarousel extends React.Component {
   loadMedia() {
     $.ajax({
       method: 'GET',
-      url: '/api/media',
+      url: '/api/media/:gameId',
       success: (data) => {
         this.setState({
           largePlayer: JSON.parse(data)[0].url,

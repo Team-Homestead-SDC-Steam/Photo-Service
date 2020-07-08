@@ -8,7 +8,7 @@ app.use(express.static(__dirname + '/../public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/api/media', (req, res) => {
+app.get('/api/media/:gameId', (req, res) => {
   db.getMedia((err, data) => {
     if (err) {
       console.log('error with app.get in server file: ', err)
