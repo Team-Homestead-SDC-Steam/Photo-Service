@@ -6,7 +6,7 @@ let mockDb = []
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/media', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
 
 var db = mongoose.connection;
 
@@ -19,7 +19,7 @@ db.once('open', function () {
 });
 
 var mediaSchema = mongoose.Schema({
-  id: {type: Number, unique: true},
+  id: { type: Number, unique: true },
   mediaType: String,
   url: String
 })
