@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/api/media/:gameId', (req, res) => {
-  db.getMedia((err, data) => {
+  let gameId = req.param.gameId
+  db.getMedia(gameId, (err, data) => {
     if (err) {
       console.log('error with app.get in server file: ', err)
     }

@@ -41,9 +41,9 @@ var generateIds = () => {
   return idArr
 }
 
-var getMedia = callback => {
+var getMedia = (param, callback) => {
   var Ids = generateIds()
-  Item.find().where('id').in(Ids).exec((err, data) => {
+  Item.find(param).where('id').in(Ids).exec((err, data) => {
     if (err) {
       console.log('error with getMedia in db file: ', err)
     }

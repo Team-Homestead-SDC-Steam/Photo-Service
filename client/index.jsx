@@ -10,7 +10,8 @@ class PhotoCarousel extends React.Component {
     this.state = {
       largePlayer: null,
       mediaRoll: [],
-      activeItem: 0
+      activeItem: 0,
+      gameId: 1
     }
     this.rotateMedia = this.rotateMedia.bind(this)
   }
@@ -19,9 +20,10 @@ class PhotoCarousel extends React.Component {
   }
 
   loadMedia() {
+    let gameId = this.state.gameId
     $.ajax({
       method: 'GET',
-      url: '/api/media/:gameId',
+      url: `/api/media/:${gameId}`,
       success: (data) => {
         this.setState({
           largePlayer: JSON.parse(data)[0].url,
