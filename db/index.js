@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/media', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const numberOfVideos = 200;
 const numberOfCarouselPhotos = 600;
@@ -42,7 +42,6 @@ var generateIds = () => {
 }
 
 var getMedia = callback => {
-  // console.log('getMedia invoked')
   var Ids = generateIds()
   Item.find().where('id').in(Ids).exec((err, data) => {
     if (err) {
