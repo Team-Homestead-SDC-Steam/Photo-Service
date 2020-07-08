@@ -4,7 +4,7 @@ import $ from 'jquery';
 import Items from './Items.jsx';
 import LargePlayer from './LargePlayer.jsx';
 
-class App extends React.Component {
+class PhotoCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +21,7 @@ class App extends React.Component {
   loadMedia() {
     $.ajax({
       method: 'GET',
-      url: '/media/items',
+      url: '/api/media',
       success: (data) => {
         this.setState({
           largePlayer: JSON.parse(data)[0].url,
@@ -66,4 +66,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<PhotoCarousel />, document.getElementById('photo-carousel'));

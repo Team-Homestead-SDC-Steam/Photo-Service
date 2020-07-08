@@ -5,10 +5,10 @@ var getMedia = require('../db/index.js');
 
 var app = express();
 app.use(express.static(__dirname + '/../public'));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/media/items', (req,res) => {
+app.get('/api/media', (req, res) => {
   db.getMedia((err, data) => {
     if (err) {
       console.log('error with app.get in server file: ', err)
@@ -17,6 +17,6 @@ app.get('/media/items', (req,res) => {
   })
 })
 
-app.listen(3004, function() {
+app.listen(3004, function () {
   console.log('listening on port 3004');
 });
