@@ -26,8 +26,8 @@ class PhotoCarousel extends React.Component {
       url: `/api/media/:${gameId}`,
       success: (data) => {
         this.setState({
-          largePlayer: JSON.parse(data)[0].url,
-          mediaRoll: JSON.parse(data)
+          largePlayer: data[0].url,
+          mediaRoll: data
         })
         // this.rotateMedia()
       },

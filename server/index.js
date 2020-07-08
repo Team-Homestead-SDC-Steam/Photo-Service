@@ -14,7 +14,7 @@ app.get('/api/media/:gameId', (req, res) => {
     if (err) {
       console.log('error with app.get in server file: ', err)
     }
-    res.send(JSON.stringify(data))
+    res.send(data)
   })
 })
 
