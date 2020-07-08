@@ -13,6 +13,7 @@ class PhotoCarousel extends React.Component {
       activeItem: 0,
       gameId: 1
     }
+    this.interval = null;
     this.rotateMedia = this.rotateMedia.bind(this)
   }
   componentDidMount() {
@@ -41,9 +42,9 @@ class PhotoCarousel extends React.Component {
     var array = this.state.mediaRoll
     this.setState({ largePlayer: array[pic].url, activeItem: pic })
 
-    clearInterval(loopPictures)
+    clearInterval(this.interval)
 
-    var loopPictures = setInterval(() => {
+    this.interval = setInterval(() => {
       if (this.state.largePlayer === array[array.length - 1].url) {
         this.setState({ largePlayer: array[2].url, activeItem: 1 })
       } else {
