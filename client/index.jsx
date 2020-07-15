@@ -52,16 +52,12 @@ class PhotoCarousel extends React.Component {
       }
       this.setState({ activeItem: this.state.activeItem + 1 })
     }, 4000)
-
-    // console.log('loopPictures: ', loopPictures)
-    // console.log('pic: ', pic)
   }
 
 
   render() {
     return (
       <div>
-        <h1>Photo Carousel</h1>
         <LargePlayer largePlayer={this.state.largePlayer} />
         <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia} />
       </div>
