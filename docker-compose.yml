@@ -3,11 +3,13 @@ services:
   app:
     container_name: photo-carousel
     build: .
+    volumes:
+      - '.:/usr/src/app'
     ports:
-      - '80:3004'
+      - '3004:3004'
     depends_on:
       - mongo
-    mongo:
-      image: mongo
-      ports:
+  mongo:
+    image: mongo
+    ports:
       - "27017:27017"
