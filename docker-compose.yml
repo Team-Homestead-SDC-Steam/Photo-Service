@@ -3,8 +3,6 @@ services:
   app:
     container_name: photo-carousel
     build: .
-    volumes:
-      - '.:/usr/src/app'
     ports:
       - '3004:3004'
     depends_on:
