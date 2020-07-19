@@ -8,8 +8,9 @@ app.use(express.static(__dirname + '/../public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/api/media/:gameId', (req, res) => {
-  let gameId = req.param.gameId
+app.get(`/api/media/:gameId`, (req, res) => {
+  //gets the id out of the request url
+  let gameId = req.url.slice(req.url.indexOf(':') + 1, req.url.length)
   db.getMedia(gameId, (err, data) => {
     if (err) {
       console.log('error with app.get in server file: ', err)

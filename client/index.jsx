@@ -11,17 +11,17 @@ class PhotoCarousel extends React.Component {
       largePlayer: null,
       mediaRoll: [],
       activeItem: 0,
-      gameId: 1
+      gameId: 3
     }
     this.interval = null;
     this.rotateMedia = this.rotateMedia.bind(this)
   }
   componentDidMount() {
-    this.loadMedia()
+    this.loadMedia(this.state.gameId)
   }
 
-  loadMedia() {
-    let gameId = this.state.gameId
+  loadMedia(gameId) {
+    // let gameId = this.state.gameId
     $.ajax({
       method: 'GET',
       url: `/api/media/:${gameId}`,
