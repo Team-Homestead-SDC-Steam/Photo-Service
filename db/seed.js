@@ -6,8 +6,8 @@ let mockDb = []
 
 
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://mongo/api', { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://mongo/api', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
 
 var db = mongoose.connection;
 
