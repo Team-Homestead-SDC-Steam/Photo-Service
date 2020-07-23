@@ -13,7 +13,6 @@ app.get(`/api/media/:gameId`, (req, res) => {
   // let gameId = window.location.href.slice(window.location.href.indexOf('/:') + 2, window.location.href.length)
   let gameId = req.url.slice(req.url.indexOf(':') + 1, req.url.length)
   db.getMedia(gameId, (err, data) => {
-    console.log('function invoked')
     if (err) {
       console.log('error with app.get in server file: ', err)
     }
