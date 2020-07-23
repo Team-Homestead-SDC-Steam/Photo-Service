@@ -11,7 +11,8 @@ app.use(express.json());
 app.get(`/api/media/:gameId`, (req, res) => {
   //gets the id out of the request url
   // let gameId = window.location.href.slice(window.location.href.indexOf('/:') + 2, window.location.href.length)
-  let gameId = req.url.slice(req.url.indexOf(':') + 1, req.url.length)
+  console.log('req.url: ', req.url)
+  let gameId = req.params.gameId
   db.getMedia(gameId, (err, data) => {
     if (err) {
       console.log('error with app.get in server file: ', err)

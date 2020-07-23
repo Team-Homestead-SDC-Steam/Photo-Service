@@ -45,6 +45,7 @@ var generateIds = (id) => {
 }
 
 var getMedia = (param, callback) => {
+  console.log('Ids in param: ', param)
   var Ids = generateIds(param)
   // console.log('Ids: ', Ids)
   Item.find().where('id').in(Ids).exec((err, data) => {

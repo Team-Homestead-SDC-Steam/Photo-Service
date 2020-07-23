@@ -7,26 +7,31 @@ import LargePlayer from './LargePlayer.jsx';
 class PhotoCarousel extends React.Component {
   constructor(props) {
     super(props);
+    const regex = /app\/(\d+)/;
+    const idRegEx = window.location.href.match(regex)
+    const id = (idRegEx && idRegEx.length == 2) ? idRegEx[1] : Math.floor(Math.random() * 99)
     this.state = {
       largePlayer: null,
       mediaRoll: [],
       activeItem: 0,
       // Note: this below only works when running through the proxy server. Just make it a random number in order to test out just the service on port 3004
-      gameId: window.location.href.slice(window.location.href.indexOf('/:') + 2, window.location.href.length)
+      gameId: id
     }
     this.interval = null;
     this.rotateMedia = this.rotateMedia.bind(this)
   }
   componentDidMount() {
+    console.log('gameId: ', this.state.gameId)
     this.loadMedia(this.state.gameId)
   }
 
   loadMedia(gameId) {
     $.ajax({
       method: 'GET',
-      url: `/api/media/:${gameId}`,
+      url: `/api/media/${gameId}`,
       success: (data) => {
         console.log('gameId from ajax: ', gameId)
+        console.log('data from ajax: ', data)
         this.setState({
           largePlayer: data[0].url,
           mediaRoll: data
