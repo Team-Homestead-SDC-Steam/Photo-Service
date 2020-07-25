@@ -29,25 +29,11 @@ var generateIds = (id) => {
   var idArr = []
   idArr.push((id) * 2, (id) * 2 + 1)
   idArr.push(200 + id * 6, 200 + id * 6 + 1, 200 + id * 6 + 2, 200 + id * 6 + 3, 200 + id * 6 + 4, 200 + id * 6 + 5)
-  // while (idArr.length < 2) {
-  //   var id = Math.floor(Math.random() * numberOfVideos)
-  //   if (!idArr.includes(id)) {
-  //     idArr.push(id)
-  //   }
-  // }
-  // while (idArr.length < 8) {
-  //   var id = numberOfVideos + Math.floor(Math.random() * numberOfCarouselPhotos)
-  //   if (!idArr.includes(id)) {
-  //     idArr.push(id)
-  //   }
-  // }
   return idArr
 }
 
 var getMedia = (param, callback) => {
-  console.log('Ids in param: ', param)
   var Ids = generateIds(param)
-  // console.log('Ids: ', Ids)
   Item.find().where('id').in(Ids).exec((err, data) => {
     if (err) {
       console.log('error with getMedia in db file: ', err)

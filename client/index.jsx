@@ -14,14 +14,12 @@ class PhotoCarousel extends React.Component {
       largePlayer: null,
       mediaRoll: [],
       activeItem: 0,
-      // Note: this below only works when running through the proxy server. Just make it a random number in order to test out just the service on port 3004
       gameId: id
     }
     this.interval = null;
     this.rotateMedia = this.rotateMedia.bind(this)
   }
   componentDidMount() {
-    console.log('gameId: ', this.state.gameId)
     this.loadMedia(this.state.gameId)
   }
 
@@ -30,13 +28,10 @@ class PhotoCarousel extends React.Component {
       method: 'GET',
       url: `/api/media/${gameId}`,
       success: (data) => {
-        console.log('gameId from ajax: ', gameId)
-        console.log('data from ajax: ', data)
         this.setState({
           largePlayer: data[0].url,
           mediaRoll: data
         })
-        // this.rotateMedia()
       },
       error: (err) => {
         console.log('error with ajax loadMedia: ', err)
