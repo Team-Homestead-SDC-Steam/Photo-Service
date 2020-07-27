@@ -36,9 +36,11 @@ const Items = props => {
       {props.mediaRoll.map((img, index) => {
         if (img.mediaType === 'video') {
           return (
-            <Item key={index} active={props.activeItem === index} >
-              <iframe src={img.url} key={index} />
+            <div >
+            <Item key={index} active={props.activeItem === index} onClick={() => {props.handleClick(index)}}>
+              <img src={img.thumbnail} key={index} />
             </Item>
+            </div>
           )
         }
         return (

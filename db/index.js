@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://mongo/api', { useNewUrlParser: true, useUnifiedTopology: true });
-// mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://mongo/api', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const numberOfVideos = 200;
 const numberOfCarouselPhotos = 600;
