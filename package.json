@@ -18,16 +18,20 @@
     "@babel/core": "latest",
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
+    "@types/nodemon": "^1.19.0",
+    "@types/webpack-dev-server": "^3.11.0",
     "babel-loader": "latest",
     "eslint": "^7.2.0",
     "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
     "eslint-plugin-react": "^7.20.0",
     "jest": "^26.1.0",
+    "nodemon": "^2.0.4",
     "webpack": "latest",
     "webpack-cli": "latest",
     "webpack-dev-server": "latest"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.1",
     "axios": "^0.19.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
@@ -36,6 +40,7 @@
     "mysql": "^2.13.0",
     "react": "latest",
     "react-dom": "latest",
+    "react-draggable": "^4.4.3",
     "styled-components": "^5.1.1"
   }
 }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Items from './Items.jsx';
 import LargePlayer from './LargePlayer.jsx';
+import styled from 'styled-components'
 
 class PhotoCarousel extends React.Component {
   constructor(props) {
@@ -45,25 +46,37 @@ class PhotoCarousel extends React.Component {
 
     clearInterval(this.interval)
 
-    this.interval = setInterval(() => {
-      if (this.state.largePlayer === array[array.length - 1].url) {
-        this.setState({ largePlayer: array[2].url, activeItem: 1 })
-      } else {
-        this.setState({ largePlayer: array[this.state.activeItem + 1].url })
-      }
-      this.setState({ activeItem: this.state.activeItem + 1 })
-    }, 4000)
+    if (pic > 1) {
+      this.interval = setInterval(() => {
+        if (this.state.largePlayer === array[array.length - 1].url) {
+          this.setState({ largePlayer: array[2].url, activeItem: 1 })
+        } else {
+          this.setState({ largePlayer: array[this.state.activeItem + 1].url })
+        }
+        this.setState({ activeItem: this.state.activeItem + 1 })
+      }, 4000)
+    }
   }
 
 
   render() {
     return (
-      <div>
-        <LargePlayer largePlayer={this.state.largePlayer} />
-        <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia} />
-      </div>
+      <FrameWrapper>
+      <LargePlayer largePlayer={this.state.largePlayer} />
+      <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia} />
+      </FrameWrapper>
     )
   }
 }
+
+const FrameWrapper = styled.div`
+    width: 600px;
+    background-color: #1b2838;
+    min-height: 300px;
+    overflow: hidden;
+    &*{
+        box-sizing: border-box;
+    }
+`;
 
 ReactDOM.render(<PhotoCarousel />, document.getElementById('photo-carousel'));
