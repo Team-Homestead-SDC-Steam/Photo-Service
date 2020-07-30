@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 const PictureFrame = styled.div`
 #photo-carousel & {
+  position: relative;
   width: 100%;
   height: 336px;
   background: #ccc;

@@ -71,7 +71,6 @@ class PhotoCarousel extends React.Component {
 
 const Wrapper = styled.div`
 #photo-carousel & {
-  margin-top: -50px;
     width: 600px;
     background-color: #1b2838;
     min-height: 300px;
