@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Draggable from 'react-draggable'
 
@@ -31,12 +31,12 @@ const Items = props => {
       <ThumbFrame imagecount={props.mediaRoll.length} scrollPosition={state}>
         {props.mediaRoll.map((img, index) => {
           return (
-            <div key={index}  className={`img ${props.activeItem === index && 'active'}`}>
+            <div key={index} className={`img ${props.activeItem === index && 'active'}`}>
               {img.mediaType === 'video' ? (
-                <img src={img.thumbnail} key={index} onClick={() => {props.handleClick(index)}}/>
+                <img src={img.thumbnail} key={index} onClick={() => { props.handleClick(index) }} />
               ) : (
-                <img src={img.url} key={index} onClick={() => {props.handleClick(index)}} />
-              )}
+                  <img src={img.url} key={index} onClick={() => { props.handleClick(index) }} />
+                )}
             </div>
           )
         })}
@@ -65,8 +65,9 @@ const Items = props => {
 }
 
 const ThumbFrame = styled.div`
+#photo-carousel & {
   width: ${props => props.imagecount * 146}px;
-  margin-left: -${props => props.scrollPosition * 146 >= 500 ?  500 : props.scrollPosition * 146  }px;
+  margin-left: -${props => props.scrollPosition * 146 >= 500 ? 500 : props.scrollPosition * 146}px;
   transition: 0.3s ease-out;
   background-color: #1b2838;
   height: 80px;
@@ -99,11 +100,14 @@ const ThumbFrame = styled.div`
         border-bottom: 8px solid #fff;
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
+        }
       }
     }
   }
+}
 `
 const ControlFrame = styled.div`
+#photo-carousel & {
   display: grid;
   grid-template-columns: 40px auto 40px;
   grid-gap: 5px;
@@ -140,7 +144,7 @@ const ControlFrame = styled.div`
       top: 0;
       left: 0;
     }
-  }
+}
 `
 
 
