@@ -61,15 +61,15 @@ class PhotoCarousel extends React.Component {
 
   render() {
     return (
-      <FrameWrapper>
+      <Wrapper>
       <LargePlayer largePlayer={this.state.largePlayer} />
       <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia} />
-      </FrameWrapper>
+      </Wrapper>
     )
   }
 }
 
-const FrameWrapper = styled.div`
+const Wrapper = styled.div`
     width: 600px;
     background-color: #1b2838;
     min-height: 300px;
