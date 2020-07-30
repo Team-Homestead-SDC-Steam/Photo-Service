@@ -61,7 +61,7 @@ class PhotoCarousel extends React.Component {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper style={{marginTop: -60, marginBottom: 60}}>
       <LargePlayer largePlayer={this.state.largePlayer} />
       <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia} />
       </Wrapper>
