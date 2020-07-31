@@ -2,11 +2,13 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('../db/index.js');
 var getMedia = require('../db/index.js');
+var compression = require('compression')
 
 var app = express();
 app.use(express.static(__dirname + '/../public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(compression());
 
 app.get(`/api/media/:gameId`, (req, res) => {
   let gameId = req.params.gameId

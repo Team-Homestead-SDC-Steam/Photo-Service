@@ -61,7 +61,7 @@ class PhotoCarousel extends React.Component {
 
   render() {
     return (
-      <Wrapper style={{marginTop: -60, marginBottom: 60}}>
+      <Wrapper>
       <LargePlayer largePlayer={this.state.largePlayer} />
       <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia} />
       </Wrapper>
@@ -71,11 +71,11 @@ class PhotoCarousel extends React.Component {
 
 const Wrapper = styled.div`
 #photo-carousel & {
-    width: 600px;
-    min-height: 300px;
-    overflow: hidden;
-    &*{
-    box-sizing: border-box;
+  width: 600px;
+  min-height: 300px;
+  overflow: hidden;
+  &*{
+  box-sizing: border-box;
   }
 }
 `;
