@@ -1,12 +1,21 @@
-import React from "react";
+import React from 'react'
+import styled from 'styled-components'
+
+const PictureFrame = styled.div`
+#photo-carousel & {
+  position: relative;
+  width: 100%;
+  height: 336px;
+  background: #ccc;
+}
+`
 
 const LargePlayer = props => {
-  // console.log(props.largePlayer)
   return (
-    <div style={{'width' : '610px' , 'height' : '337px', 'display': 'flex', 'backgroundColor': "#1b2838" }}>
-      <iframe src={props.largePlayer} style={{'width' : '610px' , 'height' : '337px', 'display': 'flex', 'backgroundColor': "#1b2838" }}/>
-    </div>
+    <PictureFrame>
+      <iframe src={props.largePlayer} style={{ width: '600px', height: '337px', display: 'flex', backgroundColor: '#1b2838' }} />
+    </PictureFrame>
   )
 }
 
-export default LargePlayer;
+export default LargePlayer
