@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://mongo/api', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const numberOfVideos = 200;
 const numberOfCarouselPhotos = 600;
@@ -24,25 +25,15 @@ var Item = mongoose.model('Item', mediaSchema);
 
 
 // Picks 2 videos and 6 carousel photos from the database
-var generateIds = () => {
+var generateIds = (id) => {
   var idArr = []
-  while (idArr.length < 2) {
-    var id = Math.floor(Math.random() * numberOfVideos)
-    if (!idArr.includes(id)) {
-      idArr.push(id)
-    }
-  }
-  while (idArr.length < 8) {
-    var id = numberOfVideos + Math.floor(Math.random() * numberOfCarouselPhotos)
-    if (!idArr.includes(id)) {
-      idArr.push(id)
-    }
-  }
+  idArr.push((id) * 2, (id) * 2 + 1)
+  idArr.push(200 + id * 6, 200 + id * 6 + 1, 200 + id * 6 + 2, 200 + id * 6 + 3, 200 + id * 6 + 4, 200 + id * 6 + 5)
   return idArr
 }
 
-var getMedia = callback => {
-  var Ids = generateIds()
+var getMedia = (param, callback) => {
+  var Ids = generateIds(param)
   Item.find().where('id').in(Ids).exec((err, data) => {
     if (err) {
       console.log('error with getMedia in db file: ', err)

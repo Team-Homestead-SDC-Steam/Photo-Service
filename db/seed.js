@@ -6,7 +6,8 @@ let mockDb = []
 
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://mongo/api', { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://localhost/api', { useNewUrlParser: true, useUnifiedTopology: true });
 
 var db = mongoose.connection;
 
@@ -21,7 +22,8 @@ db.once('open', function () {
 var mediaSchema = mongoose.Schema({
   id: { type: Number, unique: true },
   mediaType: String,
-  url: String
+  url: String,
+  thumbnail: String
 })
 
 var Item = mongoose.model('Item', mediaSchema);
@@ -32,7 +34,8 @@ var insertVideos = (arr) => {
     var newItem = new Item({
       id: i,
       mediaType: 'video',
-      url: `https://www.youtube.com/embed/${videoId}`
+      url: `https://www.youtube.com/embed/${videoId}`,
+      thumbnail: arr.videos[i].snippet.thumbnails.default.url
     })
     mockDb.push(newItem)
     newItem.save()

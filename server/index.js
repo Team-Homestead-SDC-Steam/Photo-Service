@@ -2,18 +2,23 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('../db/index.js');
 var getMedia = require('../db/index.js');
+var compression = require('compression')
+const cors = require('cors');
 
 var app = express();
 app.use(express.static(__dirname + '/../public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(compression());
+app.use(cors());
 
-app.get('/api/media', (req, res) => {
-  db.getMedia((err, data) => {
+app.get(`/api/media/:gameId`, (req, res) => {
+  let gameId = req.params.gameId
+  db.getMedia(gameId, (err, data) => {
     if (err) {
       console.log('error with app.get in server file: ', err)
     }
-    res.send(JSON.stringify(data))
+    res.send(data)
   })
 })
 
