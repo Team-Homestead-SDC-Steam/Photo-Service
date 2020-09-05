@@ -7,12 +7,13 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "seed": "node db/seed.js",
+    "seed-file": "node db/seedFile.js",
     "test": "jest",
     "lint": "eslint",
     "build": "webpack --mode production",
     "server": "node server/index.js"
   },
-  "author": "Will Hudson",
+  "author": "Will Hudson and Damien Jones",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "latest",
@@ -21,7 +22,7 @@
     "@types/nodemon": "^1.19.0",
     "@types/webpack-dev-server": "^3.11.0",
     "babel-loader": "latest",
-    "eslint": "^7.2.0",
+    "eslint": "^7.8.1",
     "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
     "eslint-plugin-react": "^7.20.0",
     "jest": "^26.1.0",
