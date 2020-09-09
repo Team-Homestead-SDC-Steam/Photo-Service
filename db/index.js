@@ -30,15 +30,15 @@ const deleteAllGames = async () => await Game.deleteMany();
 //     return idArr
 //   }
 
-// var getMedia = (param, callback) => {
-//   var Ids = generateIds(param)
-//   Item.find().where('id').in(Ids).exec((err, data) => {
-//     if (err) {
-//       console.log('error with getMedia in db file: ', err)
-//     }
-//     callback(null, data)
-//   })
-// }
+var getMedia = (param, callback) => {
+  var Ids = generateIds(param)
+  Item.find().where('id').in(Ids).exec((err, data) => {
+    if (err) {
+      console.log('error with getMedia in db file: ', err)
+    }
+    callback(null, data)
+  })
+}
 
 module.exports.db = db;
 module.exports.getMedia = getMedia;
@@ -47,3 +47,4 @@ module.exports.createGame = createGame;
 module.exports.readGame = readGame;
 module.exports.updateGame = updateGame;
 module.exports.deleteGame = deleteGame;
+module.exports.deleteAllGames = deleteAllGames;
