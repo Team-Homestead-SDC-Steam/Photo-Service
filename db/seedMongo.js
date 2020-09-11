@@ -1,83 +1,61 @@
 var fs = require('fs');
-const {db, getMedia, Game, createGame, deleteAllGames} = require('../db/index.js');
 
-let path = '../assets.dat';
-let chunk = '';
+const mongoose = require('mongoose');
+const dev = true; // FLIP FOR DEV/PRODUCTION
+const connectDomain = dev ? 'localhost' : 'mongo';
+const connectOptions = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
+mongoose.connect(`mongodb://${connectDomain}/api`, connectOptions);
+const db = mongoose.connection;
+db.on('error', (err) => { console.log('mongoose connection error: ', err) });
+db.once('open', () => insertToMongo() );
+const assetSchema = mongoose.Schema({ mediaType: String, url: String, thumbnail: String })
+const gameSchema = mongoose.Schema({ id: { type: Number, unique: true }, assets: [assetSchema] })
+const Game = mongoose.model('Game',gameSchema, 'games')
 
-const saveGameData = async () => {
 
-    let chunkString = '';
-    let chunkArray = [];
+const insertToMongo = async (status = 50) => {
+    let leftoverText = '';
+    let path = '../assets.dat';
     let count = 0;
-
-    if (await !fs.existsSync(path)) {
-        console.log ('Data file does not exist. Run "seedFile.js before importing.');
-    }
-
-    await Game.deleteMany()
-    const startTime = Date.now();
-    let gameStream = await fs.createReadStream(path);
-    gameStream.setEncoding('utf8');
-
-    gameStream.on('data', chunk => {
-        gameStream.pause();
-        chunkString += chunk; // add to end
-        chunkArray = chunkString.split('\n') // make json sets to insert
-        if(chunkString.slice(-2) != '\n') chunkString = chunkArray.pop(); // save extra text for next time
-        // let chunkTime = Date.now();
-        // console.log (`Inserting records ${count}-${count += chunkArray.length}`)
-        // count += chunkArray.length;
-        Game.insertMany(chunkArray.map( jsonText => JSON.parse(jsonText)))
-        .then(function(){ 
-            // console.log(`Completed in ${ (Date.now() - chunkTime) / 1000} seconds`)
-            gameStream.resume();
-        }).catch(function(error){ 
-            console.log(error)      // Failure 
-        }); 
-
-    });
-      
-    gameStream.on('open', () => {
-    console.log('Stream opened...');
-    });
-    
-    gameStream.on('end', () => {
-    console.log(`Seeded ${count} records. Operation took ${ (Date.now() - startTime) / 1000} seconds.`) 
-    });
-
-}
-
-
-
-
-const generateGame = (id) => {
-  let str = `{"id":${id}, "assets":[`;
-  str += generateVideos(2) + ',';
-  str += generatePhotos(6);
-  return str += ']}' 
-}
-
-const seedGameDataOld = async (count, chunkSize = 2000) => {
-  let path = './assets.dat';
-  let chunk = '';
+    let inserts = 0;
+    let insertQueue = [];
 
     if (!fs.existsSync(path)) {
         console.log ('Data file does not exist. Run "seedFile.js before importing.');
-    }
-    let gameStream = fs.createReadStream(path);
+        db.close();
+        return false;
+    } 
 
-  const startTime = Date.now();
-  for (let i = 1; i <= count; i++) {
-    chunk += `${generateGame(i)}\n`
-    if (i % chunkSize === 0 || i === count) {
-      if (!gameStream.write(chunk) ) {
-        await new Promise(resolve => gameStream.once('drain', resolve));
-        chunk = '';
-      }
-    }
-  }
-  console.log(`Seeded ${count} records. Operation took ${ (Date.now() - startTime) / 1000} seconds chunked at ${chunkSize}.`) 
-  gameStream.end()
+    let leftInDb = await Game.estimatedDocumentCount();
+    if (leftInDb > 0) await db.dropCollection('games');
+
+    let gameStream = fs.createReadStream(path);
+    gameStream.setEncoding('utf8');
+
+    const startTime = Date.now();
+
+    gameStream.on('end', async () => {
+        await insertOneArrayToMongo(insertQueue)
+        count += insertQueue.length;
+        console.log(`Attempted to seed ${count} records. Operation took ${ (Date.now() - startTime) / 1000} seconds.`) 
+        const actualInserted = await Game.estimatedDocumentCount();
+        console.log(`Actually seeded ${actualInserted} records.`) 
+        db.close();
+    });
+
+    gameStream.on('data', async (chunk) => {
+        chunk = (leftoverText + chunk).split('\n'); // prepend any partial game from previous chunk
+        leftoverText = chunk.pop();
+        insertQueue = insertQueue.concat(chunk.map(json => JSON.parse(json)));
+        if (insertQueue.length > 950) {
+            insertOneArrayToMongo(insertQueue);
+            count += insertQueue.length;
+            if (++inserts % status === 0) console.log(`Inserted ${count} records (${ (Date.now() - startTime) / 1000} )`) 
+            insertQueue = [];
+        }
+    });
 }
 
-saveGameData();
+const insertOneArrayToMongo = async (array) => {
+    await Game.collection.insertMany(array)
+}
