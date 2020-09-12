@@ -8,6 +8,8 @@ const readAllGames = async () => await Game.find();
 const deleteAllGames = async () => await Game.deleteMany();
 
 
+
+
 /* OLD INDEX CONTENT */
 
 //   const numberOfVideos = 200;

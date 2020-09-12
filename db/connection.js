@@ -2,16 +2,20 @@ const mongoose = require('mongoose');
 
 const dev = true; // FLIP FOR DEV/PRODUCTION
 
-const connectDomain = dev ? 'localhost' : 'mongo';
-const connectOptions = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
-mongoose.connect(`mongodb://${connectDomain}/api`, connectOptions);
-const db = mongoose.connection;
+const initMongo = async () => {
+  const connectDomain = dev ? 'localhost' : 'mongo';
+  const connectOptions = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
+  await mongoose.connect(`mongodb://${connectDomain}/api`, connectOptions);
+  const conn = mongoose.connection;
+  conn.on('error', (err) => { console.log('mongoose connection error: ', err) });
+  conn.once('open', () => { console.log('mongoose connected successfully') });
+}
+
+const db = initMongo();
 
 /* IF ERRORS, CHECK STATUS -> sudo systemctl status mongod 
    OR START IT sudo systemctl start mongod */
 
-db.on('error', (err) => { console.log('mongoose connection error: ', err) });
-db.once('open', () => { console.log('mongoose connected successfully') });
 
 const assetSchema = mongoose.Schema({
   mediaType: String,
@@ -27,7 +31,6 @@ const gameSchema = mongoose.Schema({
 const Game = mongoose.model('Game',gameSchema, 'games')
 
 module.exports.mongoose = mongoose;
-module.exports.connectDomain = connectDomain;
 module.exports.db = db;
 module.exports.gameSchema = gameSchema;
 module.exports.Game = Game;
