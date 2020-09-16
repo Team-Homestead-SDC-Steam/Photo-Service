@@ -1,15 +1,21 @@
+const newrelic = require('newrelic')
 var express = require('express');
+const path = require('path');
 var bodyParser = require('body-parser');
 var {db, getMedia, Game, createGame, readGame, updateGame, deleteGame} = require('../db/index.js');
 var compression = require('compression')
 const cors = require('cors');
-
+  
 var app = express();
-app.use(express.static(__dirname + '/../public'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/app', express.static(__dirname + '/../public'));
+// app.use(bodyParser.urlencoded({ extended: true })); //is this doing anything?
 app.use(express.json());
-app.use(compression()); // Follow-up: Is this doing anything?
+// app.use(compression()); // Follow-up: Is this doing anything?
 app.use(cors());
+
+app.get('/app/:gameId', (req, res) => { //* SERVE REACT WEB CONTENT
+  res.sendFile(path.resolve("./public/index.html"));
+});
 
 app.post(`/api/media/`, async (req, res) => { // *CREATE*
   try { res.send( await createGame(req.query.id,req.query.assets)) }

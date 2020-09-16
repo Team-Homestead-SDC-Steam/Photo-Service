@@ -8,14 +8,13 @@ import styled from 'styled-components'
 class PhotoCarousel extends React.Component {
   constructor(props) {
     super(props);
-    const regex = /app\/(\d+)/;
-    const idRegEx = window.location.href.match(regex)
-    const id = (idRegEx && idRegEx.length == 2) ? idRegEx[1] : Math.floor(Math.random() * 99)
+    const slashes = window.location.href.split('/');
+    const gameId = slashes[slashes.length - 1].split('?')[0].split('#')[0] || 1;
     this.state = {
       largePlayer: null,
       mediaRoll: [],
       activeItem: 0,
-      gameId: id
+      gameId: gameId
     }
     this.interval = null;
     this.rotateMedia = this.rotateMedia.bind(this)
@@ -30,8 +29,8 @@ class PhotoCarousel extends React.Component {
       url: `/api/media/${gameId}`,
       success: (data) => {
         this.setState({
-          largePlayer: data[0].url,
-          mediaRoll: data
+          largePlayer: data.assets[0].url,
+          mediaRoll: data.assets
         })
       },
       error: (err) => {
@@ -62,8 +61,8 @@ class PhotoCarousel extends React.Component {
   render() {
     return (
       <Wrapper>
-      <LargePlayer largePlayer={this.state.largePlayer} />
-      <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia} />
+        <LargePlayer largePlayer={this.state.largePlayer} />
+        <Items mediaRoll={this.state.mediaRoll} activeItem={this.state.activeItem} handleClick={this.rotateMedia} />
       </Wrapper>
     )
   }
