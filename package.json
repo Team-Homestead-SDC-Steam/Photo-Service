@@ -7,13 +7,12 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
     "seed": "node db/seed.js",
-    "seed-file": "node db/seedFile.js",
     "test": "jest",
     "lint": "eslint",
     "build": "webpack --mode production",
     "server": "node server/index.js"
   },
-  "author": "Will Hudson and Damien Jones",
+  "author": "Will Hudson",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "latest",
@@ -22,7 +21,7 @@
     "@types/nodemon": "^1.19.0",
     "@types/webpack-dev-server": "^3.11.0",
     "babel-loader": "latest",
-    "eslint": "^7.8.1",
+    "eslint": "^7.2.0",
     "eslint-config-hackreactor": "github:hackreactor-labs/eslint-config-hackreactor",
     "eslint-plugin-react": "^7.20.0",
     "jest": "^26.1.0",
@@ -38,16 +37,12 @@
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^4.15.0",
-    "jq": "^1.7.2",
     "jquery": "^3.1.1",
     "mongoose": ">=5.7.5",
     "mysql": "^2.13.0",
-    "newrelic": "^6.13.0",
-    "path": "^0.12.7",
     "react": "latest",
     "react-dom": "latest",
     "react-draggable": "^4.4.3",
-    "styled-components": "^5.1.1",
-    "youtube-dl": "^3.0.2"
+    "styled-components": "^5.1.1"
   }
 }
