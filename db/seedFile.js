@@ -8,7 +8,10 @@ const rnd = n => Array.isArray(n) ? n[rnd(n.length) - 1] : Math.floor(Math.rando
 videos = videos.map( video => video.id.videoId);
 pictures = pictures.map( picture => `${picture.public_id}.${picture.format}`)
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 64e6dda7e36c15db3a9dae90a81c417b4bc11932
 const generateVideos = (count) => {
   let str = '';
   let randomVideo;
@@ -50,7 +53,14 @@ const saveGameData = async (count, chunkSize = 2000) => {
   let path = './assets.dat';
   let chunk = '';
 
+<<<<<<< HEAD
+  if (fs.existsSync(path)) {
+    console.log(`deleting file: ${path}.`)
+    fs.unlinkSync(path);
+  }
+=======
   if (fs.existsSync(path)) fs.unlinkSync(path);
+>>>>>>> 64e6dda7e36c15db3a9dae90a81c417b4bc11932
   let gameStream = fs.createWriteStream(path);
 
   const startTime = Date.now();
@@ -67,4 +77,9 @@ const saveGameData = async (count, chunkSize = 2000) => {
   gameStream.end()
 }
 
+<<<<<<< HEAD
+// if not 10m, pass it as an argument
+saveGameData(process.argv[2] || 10000000);
+=======
 saveGameData(10000000);
+>>>>>>> 64e6dda7e36c15db3a9dae90a81c417b4bc11932

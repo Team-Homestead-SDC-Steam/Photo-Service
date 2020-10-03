@@ -1,0 +1,12 @@
+
+
+
+
+youtube-dl --dump-json --flat-playlist "https://www.youtube.com/playlist?list=PLaQokWZfgbymW8N82v3QFY1I2hqA_KzuH" | jq -r '"\{"mediaType":"video","url":"https://www.youtube.com/embed/(.id)","thumbnail":"https://i.ytimg.com/vi/(.id)/default.jpg"},"' > testYouTubePlaylistGenerator.js
+
+
+
+
+
+youtube-dl --dump-json --flat-playlist "https://www.youtube.com/playlist?list=PL46-cKSxMYYCMpzXo6p0Cof8hJInYgohU" \
+  | jq -r '"\(.title)\nhttps://youtu.be/\(.id)\n"' > testPlaylist.js

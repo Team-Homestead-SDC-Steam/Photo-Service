@@ -8,6 +8,7 @@ const readAllGames = async () => await Game.find();
 const deleteAllGames = async () => await Game.deleteMany();
 
 
+module.exports.mongoose = mongoose;
 module.exports.db = db;
 module.exports.Game = Game;
 module.exports.createGame = createGame;
