@@ -12,7 +12,6 @@ const insertToMongo = async (status = 50) => {
     let inserts = 0;
     let insertQueue = [];
 
-    console.log(path);
     if (!fs.existsSync(path)) {
         console.log ('Data file does not exist. Run "seedFile.js before importing.');
         db.close();
@@ -20,7 +19,7 @@ const insertToMongo = async (status = 50) => {
     } 
 
     let leftInDb = await Game.estimatedDocumentCount();
-    if (leftInDb > 0) await mongoose.connection.dropCollection('games');
+    if (leftInDb > 0) await db.dropCollection('games');
 
     let gameStream = fs.createReadStream(path);
     gameStream.setEncoding('utf8');

@@ -42,7 +42,11 @@
     "jquery": "^3.1.1",
     "mongoose": ">=5.7.5",
     "mysql": "^2.13.0",
+<<<<<<< HEAD
     "node-fetch": "^2.6.1",
+=======
+    "newrelic": "^6.13.0",
+>>>>>>> 64e6dda7e36c15db3a9dae90a81c417b4bc11932
     "path": "^0.12.7",
     "react": "latest",
     "react-dom": "latest",

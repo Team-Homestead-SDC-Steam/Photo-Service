@@ -1,4 +1,3 @@
-// const newrelic = require('newrelic');
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -9,9 +8,6 @@ const DEV_PATH = '/home/damien/rpt21/sdc/';
 const dev = process.argv[1].startsWith(DEV_PATH);
 
 let {mongoose, db, getMedia, Game, createGame, readGame, updateGame, deleteGame} = require('../db/index.js');
-
-// process.argv.includes('cluster') ? require('./cluster.js') : false
-
 
 const initExpress = () => {
   
@@ -51,7 +47,6 @@ const initExpress = () => {
   app.listen(3004, function () {
     console.log('listening on port 3004');
   });
-
 }
 
 // Cluster nodes (optional; select by adding the "cluster" parameter)
