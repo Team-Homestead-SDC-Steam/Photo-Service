@@ -1,25 +1,18 @@
 var fs = require('fs');
 
-const mongoose = require('mongoose');
-const dev = true; // FLIP FOR DEV/PRODUCTION
-const connectDomain = dev ? 'localhost' : 'mongo';
-const connectOptions = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
-mongoose.connect(`mongodb://${connectDomain}/api`, connectOptions);
+const {mongoose, gameSchema, Game} = require('./connection.js');
 const db = mongoose.connection;
-db.on('error', (err) => { console.log('mongoose connection error: ', err) });
-db.once('open', () => insertToMongo() );
-const assetSchema = mongoose.Schema({ mediaType: String, url: String, thumbnail: String })
-const gameSchema = mongoose.Schema({ id: { type: Number, unique: true }, assets: [assetSchema] })
-const Game = mongoose.model('Game',gameSchema, 'games')
-
+db.on('open', () => { insertToMongo() });
 
 const insertToMongo = async (status = 50) => {
+    console.log('beginning insert...');
     let leftoverText = '';
-    let path = '../assets.dat';
+    let path = './assets.dat';
     let count = 0;
     let inserts = 0;
     let insertQueue = [];
 
+    console.log(path);
     if (!fs.existsSync(path)) {
         console.log ('Data file does not exist. Run "seedFile.js before importing.');
         db.close();
@@ -27,7 +20,7 @@ const insertToMongo = async (status = 50) => {
     } 
 
     let leftInDb = await Game.estimatedDocumentCount();
-    if (leftInDb > 0) await db.dropCollection('games');
+    if (leftInDb > 0) await mongoose.connection.dropCollection('games');
 
     let gameStream = fs.createReadStream(path);
     gameStream.setEncoding('utf8');

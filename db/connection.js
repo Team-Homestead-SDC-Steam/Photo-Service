@@ -3,19 +3,19 @@ const mongoose = require('mongoose');
 const dev = true; // FLIP FOR DEV/PRODUCTION
 
 const initMongo = async () => {
+  console.log('Trying to connect to Mongoose server');
   const connectDomain = dev ? 'localhost' : 'mongo';
   const connectOptions = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
-  await mongoose.connect(`mongodb://${connectDomain}/api`, connectOptions);
   const conn = mongoose.connection;
-  conn.on('error', (err) => { console.log('mongoose connection error: ', err) });
-  conn.once('open', () => { console.log('mongoose connected successfully') });
+  await mongoose.connect(`mongodb://${connectDomain}/api`, connectOptions, (err) => {
+    console.log(err ? `Mongoose connection error: ${err}` : 'Mongoose connected successfully.');
+  });
 }
 
 const db = initMongo();
 
 /* IF ERRORS, CHECK STATUS -> sudo systemctl status mongod 
    OR START IT sudo systemctl start mongod */
-
 
 const assetSchema = mongoose.Schema({
   mediaType: String,
