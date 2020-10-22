@@ -6,7 +6,7 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
-    "seed": "node db/seed.js",
+    "seed": "node db/seedMongo.js",
     "test": "jest",
     "lint": "eslint",
     "build": "webpack --mode production",
