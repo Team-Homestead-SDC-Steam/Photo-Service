@@ -66,4 +66,4 @@ const saveGameData = async (count, chunkSize = 2000) => {
   gameStream.end()
 }
 
-saveGameData(10000000);
+saveGameData(1000000);
