@@ -1,27 +1,20 @@
 const mongoose = require('mongoose');
 
 const DEV_PATH = '/home/damien/rpt21/sdc/';
-const SERVER_IP = '52.12.135.244'; // public IP
-// const SERVER_IP = '172.31.34.194'; // private IP
 
-const dev = process.argv[1].startsWith(DEV_PATH);
+const LOCAL_IP = 'localhost';
+const PUBLIC_IP = '52.12.135.244'; // static IP
+const PRIVATE_IP = '172.31.34.194';
+
+const SERVER_IP = PUBLIC_IP;
+
+const dev = !process.argv[1].startsWith(DEV_PATH);
 
 const initMongo = async () => {
-  const connectDomain = dev ? 'localhost' : SERVER_IP;
-  const connectOptions = { 
-  	useNewUrlParser: true, 
-  	useUnifiedTopology: true, 
-  	useCreateIndex: true, 
-  	useFindAndModify: false,
-  	serverSelectionTimeoutMS: 20000,
-  	socketTimeoutMS: 45000, 
-  	ssl: true,
-  	sslValidate: true,
-  	sslCA: require('fs').readFileSync(`${__dirname}/sdc21.pem`)
-  	}
+  const connectDomain = dev ? LOCAL_IP : SERVER_IP;
+  const connectOptions = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
   try {
     console.log (`mongodb://${connectDomain}/api`);
-    console.log ( connectOptions );
     await mongoose.connect(`mongodb://${connectDomain}/api`, connectOptions);
   } catch(err) {
     console.log('mongoose connection error: ', err)

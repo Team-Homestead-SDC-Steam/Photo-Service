@@ -1,6 +1,7 @@
 const fs = require('fs');
 let {videos} = require('./videoData.js')
 let {pictures} = require('./imageData.js');
+const start = 9500001;
 
 const rnd = n => Array.isArray(n) ? n[rnd(n.length) - 1] : Math.floor(Math.random() * n) + 1;
 
@@ -48,12 +49,13 @@ const generateGame = (id) => {
 const saveGameData = async (count, chunkSize = 2000) => {
   let path = './assets.dat';
   let chunk = '';
+  const end = count + count
 
   if (fs.existsSync(path)) fs.unlinkSync(path);
   let gameStream = fs.createWriteStream(path);
 
   const startTime = Date.now();
-  for (let i = 1; i <= count; i++) {
+  for (let i = start; i <= start + count; i++) {
     chunk += `${generateGame(i)}\n`
     if (i % chunkSize === 0 || i === count) {
       if (!gameStream.write(chunk) ) {
@@ -66,4 +68,4 @@ const saveGameData = async (count, chunkSize = 2000) => {
   gameStream.end()
 }
 
-saveGameData(1000000);
+saveGameData(500000);
