@@ -4,14 +4,14 @@ const DEV_PATH = '/home/damien/rpt21/sdc/';
 
 const LOCAL_IP = 'localhost';
 const PUBLIC_IP = '52.12.135.244'; // static IP
-const PRIVATE_IP = '172.31.34.194';
 
 const SERVER_IP = PUBLIC_IP;
+const HOST = `${DEV_PATH.split('/')[4]}:${DEV_PATH.split('/')[3]}@`
 
-const dev = !process.argv[1].startsWith(DEV_PATH);
+const dev = process.argv[1].startsWith(DEV_PATH);
 
 const initMongo = async () => {
-  const connectDomain = dev ? LOCAL_IP : SERVER_IP;
+  const connectDomain = `${HOST}${dev ? LOCAL_IP : SERVER_IP}`;
   const connectOptions = { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false }
   try {
     console.log (`mongodb://${connectDomain}/api`);
