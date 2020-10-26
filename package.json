@@ -1,18 +1,17 @@
 {
-  "name": "photo-carousel",
-  "version": "1.0.0",
-  "description": "photo carousel for FEC",
+  "name": "Photo-Carousel",
+  "version": "2.0.0",
+  "description": "Photo Carousel for Steam clone",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js",
+    "build": "webpack -d --watch",
+    "dev": "webpack -d && sudo nodemon server/index.js",
     "seed": "node db/seedMongo.js",
     "test": "jest",
     "lint": "eslint",
-    "build": "webpack --mode production",
-    "server": "node server/index.js"
+    "prod": "webpack --mode production && sudo node server/index.js"
   },
-  "author": "Will Hudson",
+  "author": "Damien Jones & Will Hudson",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "latest",
