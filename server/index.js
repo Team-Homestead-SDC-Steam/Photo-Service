@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const DEV_PATH = '/home/damien/rpt21/sdc/';
 const dev = process.argv[1].startsWith(DEV_PATH);
+const PORT = dev ? 3004 : 80;
 
 let {mongoose, db, getMedia, Game, createGame, readGame, updateGame, deleteGame} = require('../db/index.js');
 
@@ -44,8 +45,8 @@ const initExpress = () => {
     catch(err) { res.status(401).send(`Game ${req.params.id} was not deleted:\n${err}`) }
   });
   
-  app.listen(3004, function () {
-    console.log('listening on port 3004');
+  app.listen(PORT, function () {
+    console.log(`listening on port ${PORT}`);
   });
 }
 
