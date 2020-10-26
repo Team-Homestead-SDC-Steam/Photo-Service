@@ -16,6 +16,8 @@ const initExpress = () => {
 
   var app = express();
   app.use('/app', express.static(__dirname + '/../public'));
+  app.use('/', express.static(__dirname + '/../public'));
+
   // app.use(bodyParser.urlencoded({ extended: true })); //is this doing anything?
   app.use(express.json());
   // app.use(compression()); // Follow-up: Is this doing anything?
